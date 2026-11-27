@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>体检报告演示 - Zing-suifeng/git-doctor-fixture</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif; background:#f5f7fa; margin:0; padding:32px 20px; color:#303133; }
+  .wrap { max-width:960px; margin:0 auto; }
+  .card { background:#fff; border-radius:8px; box-shadow:0 2px 12px rgba(0,0,0,.08); padding:24px 28px; margin-bottom:20px; }
+  .head { display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #ebeef5; padding-bottom:16px; margin-bottom:20px; }
+  .head h1 { font-size:20px; margin:0; }
+  .tag { display:inline-block; padding:2px 10px; border-radius:4px; font-size:12px; color:#fff; }
+  .tag.success { background:#67c23a; } .tag.warning { background:#e6a23c; }
+  .tag.danger { background:#f56c6c; } .tag.info { background:#909399; }
+  .top { display:flex; gap:32px; align-items:center; }
+  .score { font-size:56px; font-weight:600; line-height:1; color:#f56c6c; }
+  .score-label { color:#909399; font-size:13px; text-align:center; }
+  .summary { font-size:15px; margin:0 0 8px; }
+  .meta { color:#909399; font-size:13px; margin:0; }
+  .sec-title { font-size:15px; font-weight:600; border-left:3px solid #409eff; padding-left:10px; margin:24px 0 14px; }
+  .dim { margin-bottom:16px; }
+  .dim-head { display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px; }
+  .bar { background:#ebeef5; border-radius:7px; height:14px; overflow:hidden; }
+  .bar-in { background:#409eff; height:100%; border-radius:7px; }
+  .dim-detail { color:#909399; font-size:12px; margin-top:4px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { border:1px solid #ebeef5; padding:8px 10px; text-align:left; }
+  th { background:#fafafa; }
+  .ai-block { background:#f4f4f5; border-radius:6px; padding:16px 20px; margin-top:8px; }
+  .ai-text { white-space:pre-wrap; line-height:1.8; font-size:14px; }
+  .ai-tag { font-size:12px; color:#909399; font-weight:400; margin-left:8px; }
+  .foot { color:#c0c4cc; font-size:12px; text-align:center; margin-top:8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="head"><h1>Git 仓库接入体检报告</h1><span class="tag danger">高风险</span></div>
+    <div class="top">
+      <div><div class="score">16</div><div class="score-label">接入就绪度 / 100</div></div>
+      <div><p class="summary">仓库 Zing-suifeng/git-doctor-fixture 存在明显风险，建议整改后再接入</p><p class="meta">仓库：Zing-suifeng/git-doctor-fixture</p><p class="meta">体检时间：2026-11-26T19:58:20.995934</p></div>
+    </div>
+    <div class="sec-title">各项检测</div>
+    <div class="dim">
+      <div class="dim-head"><span>文档与脚本完整度</span><span>0 / 40</span></div>
+      <div class="bar"><div class="bar-in" style="width:0%"></div></div>
+      <div class="dim-detail">关键文档与脚本大面积缺失</div>
+    </div><div class="dim">
+      <div class="dim-head"><span>硬编码路径</span><span>6 / 15</span></div>
+      <div class="bar"><div class="bar-in" style="width:40%"></div></div>
+      <div class="dim-detail">部分缺失</div>
+    </div><div class="dim">
+      <div class="dim-head"><span>密钥泄露</span><span>0 / 30</span></div>
+      <div class="bar"><div class="bar-in" style="width:0%"></div></div>
+      <div class="dim-detail">缺失</div>
+    </div><div class="dim">
+      <div class="dim-head"><span>Windows 脚本兼容</span><span>10 / 15</span></div>
+      <div class="bar"><div class="bar-in" style="width:67%"></div></div>
+      <div class="dim-detail">发现 Windows 专用脚本，Linux 环境需替换</div>
+    </div>
+    <div class="sec-title">风险清单（11）</div>
+    <table><thead><tr><th>等级</th><th>风险类型</th><th>文件</th><th>行号</th><th>说明</th></tr></thead>
+    <tbody><tr>
+      <td><span class="tag danger">HIGH</span></td>
+      <td>敏感配置文件入库</td>
+      <td>.env</td>
+      <td>0</td>
+      <td>发现 .env 文件，可能包含数据库密码或 API Key</td>
+    </tr><tr>
+      <td><span class="tag danger">HIGH</span></td>
+      <td>疑似明文口令/密钥</td>
+      <td>.env</td>
+      <td>1</td>
+      <td>疑似密钥泄露（内容已脱敏，请人工核查该行）</td>
+    </tr><tr>
+      <td><span class="tag danger">HIGH</span></td>
+      <td>OpenAI API Key (sk-)</td>
+      <td>app.py</td>
+      <td>3</td>
+      <td>疑似密钥泄露（内容已脱敏，请人工核查该行）</td>
+    </tr><tr>
+      <td><span class="tag danger">HIGH</span></td>
+      <td>疑似明文口令/密钥</td>
+      <td>app.py</td>
+      <td>4</td>
+      <td>疑似密钥泄露（内容已脱敏，请人工核查该行）</td>
+    </tr><tr>
+      <td><span class="tag warning">MEDIUM</span></td>
+      <td>硬编码路径</td>
+      <td>app.py</td>
+      <td>1</td>
+      <td>疑似写死绝对路径，换环境后可能失效：DATA = &quot;/Users/zhang/data.csv&quot;</td>
+    </tr><tr>
+      <td><span class="tag warning">MEDIUM</span></td>
+      <td>硬编码路径</td>
+      <td>app.py</td>
+      <td>2</td>
+      <td>疑似写死绝对路径，换环境后可能失效：CONF = &quot;/home/ubuntu/config.ini&quot;</td>
+    </tr><tr>
+      <td><span class="tag warning">MEDIUM</span></td>
+      <td>硬编码路径</td>
+      <td>deploy.bat</td>
+      <td>2</td>
+      <td>疑似写死绝对路径，换环境后可能失效：copy C:\data\input.txt D:\backup\</td>
+    </tr><tr>
+      <td><span class="tag warning">MEDIUM</span></td>
+      <td>Windows 专用脚本</td>
+      <td>deploy.bat</td>
+      <td>0</td>
+      <td>该文件为 Windows 专用脚本，Linux 环境无法直接运行</td>
+    </tr><tr>
+      <td><span class="tag info">LOW</span></td>
+      <td>文档缺失</td>
+      <td>README.md</td>
+      <td>0</td>
+      <td>未发现有效的 README（缺失或内容过短）</td>
+    </tr><tr>
+      <td><span class="tag info">LOW</span></td>
+      <td>依赖清单缺失</td>
+      <td>-</td>
+      <td>0</td>
+      <td>未发现常见依赖清单文件</td>
+    </tr><tr>
+      <td><span class="tag info">LOW</span></td>
+      <td>启动脚本缺失</td>
+      <td>-</td>
+      <td>0</td>
+      <td>未发现常见启动脚本或 compose 文件</td>
+    </tr></tbody></table>
+    <div class="ai-block">
+      <div class="sec-title">AI 接入建议 <span class="ai-tag">由 DeepSeek 生成，仅供参考</span></div>
+      <div class="ai-text"><strong>结论：暂不能接入。</strong> 存在明文密钥与敏感配置入库，属阻断级风险，须先整改。
+
+优先整改：
+1. 立即从仓库移除 `.env`，将 OpenAI API Key 等密钥全部移出代码，改用环境变量注入，并<strong>轮换已泄露的密钥</strong>（历史提交也需清理）。
+2. 清理 `app.py` 中的明文口令/密钥，统一走环境变量或密钥管理。
+3. 消除 `app.py`、`deploy.bat` 中的硬编码路径，改为可配置参数。
+4. 补齐 `README.md`、依赖清单与启动脚本，并将 `deploy.bat` 改为跨平台脚本或补充说明。
+
+完成 1-2 项后可复审。</div>
+    </div>
+  </div>
+  <div class="foot">本报告由 Git 仓库接入体检工具生成 · AI 建议由 DeepSeek 提供</div>
+</div>
+</body>
+</html>
