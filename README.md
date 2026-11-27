@@ -16,6 +16,8 @@ AI建议：可选接DeepSeek（OpenAI兼容），没配key就完全不调用，�
 检测项与评分
 
 代码结构：
+
+```
 src/main/java/com/intern/doctor/
 ├── InternTestApplication.java     启动类
 ├── common/                        统一返回、业务异常、全局异常处理
@@ -26,6 +28,7 @@ src/main/java/com/intern/doctor/
 ├── checker/                       四个检测器，统一实现 Checker 接口
 ├── dto/                           请求对象、仓库文件
 └── vo/                            报告、维度、风险条目
+```
 
 总分 100，四项加权：
 | 检测项                       | 分值 | 说明                                                                                                   |
