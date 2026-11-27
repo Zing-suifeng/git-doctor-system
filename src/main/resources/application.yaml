@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: intern-test-git-doctor
+
+# 体检工具配置（同时支持 GitHub 和 Gitee）
+doctor:
+  repo:
+    github-api-base: https://api.github.com
+    gitee-api-base: https://gitee.com/api/v5
+    # 可选 token，提高限流。用环境变量注入，不要写死在文件里。
+    # Gitee 私有仓库需要 GITEE_TOKEN；GitHub 提高限流用 GITHUB_TOKEN。
+    github-token: ${GITHUB_TOKEN:}
+    gitee-token: ${GITEE_TOKEN:}
+    # 文件树里纳入检测的文件数上限（只存路径，不发 API）
+    max-files: 1500
+    # 单个文件内容最大读取字节数，超过则跳过内容扫描（只做文件名检测）
+    max-file-bytes: 200000
+    # 每类代码文件抽样读几个内容（分桶抽样，控制 API 调用量）
+    code-sample-per-type: 5
+    # 一次体检读内容的文件总数上限（约等于 API 调用量，未认证建议 ≤40）
+    max-content-files: 40
+  # AI 接入建议（可选，默认关闭；不配 key 就完全不调用，开箱即用不受影响）
+  ai:
+    enabled: ${AI_ENABLED:false}
+    api-base: https://api.deepseek.com
+    model: deepseek-chat
+    api-key: ${DEEPSEEK_API_KEY:}
+    timeout-seconds: 15
