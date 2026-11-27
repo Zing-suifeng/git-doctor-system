@@ -13,10 +13,6 @@ AI建议：可选接DeepSeek（OpenAI兼容），没配key就完全不调用，�
 	mvn spring-boot:run
 不设这两个变量就是纯规则模式，报告里没有aiAdvice字段内容。调用失败或超时自动跳过，不影响评分。
 
-演示报告（带AI建议，可直接用浏览器打开截图或存PDF）：
-	docs/demo-report.html   真实体检结果，16分高风险，含DeepSeek接入建议
-	docs/demo-report.json   这份报告的接口原始返回数据
-
 检测项与评分
 
 代码结构：
